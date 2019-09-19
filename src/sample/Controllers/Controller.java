@@ -1,5 +1,6 @@
 package sample.Controllers;
 
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import sample.User;
-
+import sample.model.User;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Controller {
 
@@ -106,6 +109,7 @@ public class Controller {
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(error);
         Scene secondScene = new Scene(secondaryLayout, 500, 50);
+
         // New window (Stage)
         Stage newWindow = new Stage();
         newWindow.setTitle("CREDENTIALS ERROR!");
@@ -119,6 +123,7 @@ public class Controller {
         for (int i = 0; i < allUsers.length; i++) {
             if (allUsers[i].getPassword().equals(password)) {
                 welcomeName = allUsers[i].getUserName();
+                int timeoutValue = allUsers[i].getTimer();
                 successCount++;
                 authSignInButton.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
@@ -135,8 +140,12 @@ public class Controller {
                 stage.setScene(new Scene(root));
                 stage.setTitle("Home Page");
                 stage.show();
+
+                autoLogOut(stage, timeoutValue);
+
             }
         }
+
 
         if (password.length() < 4) {
             credErrorMessageWindow("Not enough digits in the password.");
@@ -145,5 +154,43 @@ public class Controller {
         if (successCount == 0 && password.length() == 4) {
             credErrorMessageWindow("No users found with the password you've entered.");
         }
+    }
+
+    private void autoLogOut(Stage stage, int timeoutValue) {
+        Timer timer = new Timer();
+
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                timer.cancel();     // Terminate the timer thread
+
+                System.out.println("Timer Expired!");
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        stage.getScene().getWindow().hide();
+
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/sample/resources/login.fxml"));
+
+                        try {
+                            loader.load();
+                        } catch (
+                                IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        Parent root = loader.getRoot();
+                        Stage stage = new Stage();
+                        stage.setScene(new
+                                Scene(root));
+                        stage.setTitle("Login Page");
+                        stage.show();
+                    }
+                });
+            }
+        };
+        timer.schedule(timerTask, timeoutValue);
+        System.out.println("Timer Started!");
     }
 }

@@ -1,5 +1,6 @@
 package sample.Controllers;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,16 +10,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 public class AfterLoginController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Text welcomeText;
@@ -30,8 +24,6 @@ public class AfterLoginController {
     void initialize() {
 
         welcomeText.setText(welcomeText.getText().concat(Controller.welcomeName));
-
-        System.out.println(Controller.welcomeName);
 
         authSignOutButton.setOnAction(event -> {
 
@@ -50,7 +42,7 @@ public class AfterLoginController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Login Page");
-            stage.showAndWait();
+            stage.show();
 
         });
     }

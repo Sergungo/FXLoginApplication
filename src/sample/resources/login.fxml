@@ -5,10 +5,18 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1400.0" style="-fx-background-color: #0a0f16;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="926.0" prefWidth="896.0" style="-fx-background-color: #552e2f;" />
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="926.0" prefWidth="896.0" style="-fx-background-color: #552e2f;">
+         <children>
+            <Text fx:id="expiredText" layoutX="161.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="209.13671875">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
       <AnchorPane layoutX="922.0" layoutY="10.0" prefHeight="926.0" prefWidth="470.0" style="-fx-background-color: #10161e;">
          <children>
             <PasswordField fx:id="passField" alignment="CENTER" layoutX="60.0" layoutY="265.0" prefHeight="66.0" prefWidth="360.0" promptText="****" style="-fx-background-color: #000000; -fx-border-color: #282833; -fx-background-radius: 5; -fx-border-radius: 5;">

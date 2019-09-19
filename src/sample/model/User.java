@@ -1,4 +1,4 @@
-package sample;
+package sample.model;
 
 public enum User {
     User1("PIANO", "0000", 10000), User2("BASS", "5555", 20000);
