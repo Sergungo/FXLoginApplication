@@ -1,4 +1,4 @@
-package sample.Controllers;
+package sample.controllers;
 
 import javafx.application.Platform;
 import javafx.event.Event;

@@ -1,6 +1,5 @@
-package sample.Controllers;
+package sample.controllers;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
