@@ -28,7 +28,6 @@ public class AfterLoginController {
         authSignOutButton.setOnAction(event -> {
 
             authSignOutButton.getScene().getWindow().hide();
-
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/resources/login.fxml"));
 
@@ -43,7 +42,6 @@ public class AfterLoginController {
             stage.setScene(new Scene(root));
             stage.setTitle("Login Page");
             stage.show();
-
         });
     }
 }

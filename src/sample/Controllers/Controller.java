@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.model.User;
 import java.io.IOException;
@@ -146,11 +145,9 @@ public class Controller {
             }
         }
 
-
         if (password.length() < 4) {
             credErrorMessageWindow("Not enough digits in the password.");
         }
-
         if (successCount == 0 && password.length() == 4) {
             credErrorMessageWindow("No users found with the password you've entered.");
         }
@@ -169,7 +166,6 @@ public class Controller {
                     @Override
                     public void run() {
                         stage.getScene().getWindow().hide();
-
                         FXMLLoader loader = new FXMLLoader();
                         loader.setLocation(getClass().getResource("/sample/resources/login.fxml"));
 
@@ -182,8 +178,7 @@ public class Controller {
 
                         Parent root = loader.getRoot();
                         Stage stage = new Stage();
-                        stage.setScene(new
-                                Scene(root));
+                        stage.setScene(new Scene(root));
                         stage.setTitle("Login Page");
                         stage.show();
                     }
